@@ -35,5 +35,53 @@ describe('POST /users', () => {
     })
 
   })
+
+  context.only('required fields', () => {
+    let user;
+
+    beforeEach(() => {
+      user = {
+        name: "Margot Robbie",
+        email: "margot@hotmail.com",
+        password: "pwd123"
+      }
+    })
+
+    it('name is required', () => {
+      delete user.name
+      
+      cy.postUser(user).then(response => {
+
+        const { message } = response.body
+        
+        expect(response.status).to.eq(400)
+        expect(message).to.equal('ValidationError: \"name\" is required')
+      })
+    })
+    
+    it('email is required', () => {
+      delete user.email
+      
+      cy.postUser(user).then(response => {
+
+        const { message } = response.body
+        
+        expect(response.status).to.eq(400)
+        expect(message).to.equal('ValidationError: \"email\" is required')
+      })
+    })
+
+    it('password is required', () => {
+      delete user.password
+      
+      cy.postUser(user).then(response => {
+
+        const { message } = response.body
+        
+        expect(response.status).to.eq(400)
+        expect(message).to.equal('ValidationError: \"password\" is required')
+      })
+    })
+  })
 })
 
