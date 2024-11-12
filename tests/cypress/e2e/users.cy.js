@@ -36,7 +36,7 @@ describe('POST /users', () => {
 
   })
 
-  context.only('required fields', () => {
+  context('required fields', () => {
     let user;
 
     beforeEach(() => {
