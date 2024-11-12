@@ -1,0 +1,34 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Projeto de testes de API do Mark85",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristianoSFMothe/mark85.git"
+  },
+  "keywords": [
+    "cypress",
+    "api",
+    "mark85",
+    "mongodb",
+    "rabbimq"
+  ],
+  "author": "Cristiano Ferreira Mothe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CristianoSFMothe/mark85/issues"
+  },
+  "homepage": "https://github.com/CristianoSFMothe/mark85#readme",
+  "devDependencies": {
+    "cypress": "^12.12.0",
+    "cypress-plugin-api": "^2.11.2",
+    "mongodb": "^6.10.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
