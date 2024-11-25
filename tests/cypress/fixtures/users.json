@@ -11,5 +11,20 @@
   "email_404": {
     "email": "404@gmail.com",
     "password": "pwd123"
+  },
+  "create": {
+    "name": "Cristiano Ferreira",
+    "email": "cristianor@gmail.com",
+    "password": "pwd123"
+  },
+  "duplicate": {
+    "name": "James Gun",
+    "email": "james@hotmail.com",
+    "password": "pwd123"
+  },
+  "required": {
+    "name": "Margot Robbie",
+    "email": "margot@hotmail.com",
+    "password": "pwd123"
   }
 }
