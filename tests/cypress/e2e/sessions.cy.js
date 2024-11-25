@@ -1,22 +1,25 @@
 describe('POST /sessions', () => {
   it('user session', () => {
-    const userData = {
-      name: "Jennifer Aniston",
-      email: "jennifer@gmail.com",
-      password: 'pwd123'
-    }
+    cy.fixture('users').then((users) => {
 
-    cy.task('deleteUser', userData.email)
-    cy.postUser(userData)
-
-    cy.postSession(userData).then(response => {
-      const { user, token } = response.body;
-
-      expect(response.status).to.eq(200)
-      expect(user.name).to.eq(userData.name)
-      expect(user.email).to.eq(userData.email)
-      expect(token).not.to.empty
-    })   
+      const userData = {
+        name: "Jennifer Aniston",
+        email: "jennifer@gmail.com",
+        password: 'pwd123'
+      }
+  
+      cy.task('deleteUser', userData.email)
+      cy.postUser(userData)
+  
+      cy.postSession(userData).then(response => {
+        const { user, token } = response.body;
+  
+        expect(response.status).to.eq(200)
+        expect(user.name).to.eq(userData.name)
+        expect(user.email).to.eq(userData.email)
+        expect(token).not.to.empty
+      })   
+    })
   });
 
   it('invalid password', () => {

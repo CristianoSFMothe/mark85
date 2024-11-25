@@ -1,0 +1,15 @@
+{
+  "login": {
+    "name": "Jennifer Aniston",
+    "email": "jennifer@gmail.com",
+    "password": "pwd123"
+  },
+  "inv_pass": {
+    "email": "jennifer@gmail.com",
+    "password": "123456"
+  },
+  "email_404": {
+    "email": "404@gmail.com",
+    "password": "pwd123"
+  }
+}
