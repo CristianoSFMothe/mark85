@@ -1,10 +1,13 @@
 describe('POST /sessions', () => {
   it('user session', () => {
     const userData = {
-      name: "Cristiano Ferreira",
-      email: "cristiano@gmail.com",
+      name: "Jennifer Aniston",
+      email: "jennifer@gmail.com",
       password: 'pwd123'
     }
+
+    cy.task('deleteUser', userData.email)
+    cy.postUser(userData)
 
     cy.postSession(userData).then(response => {
       const { user, token } = response.body;
