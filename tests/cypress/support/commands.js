@@ -19,3 +19,17 @@ Cypress.Commands.add('postSession', (user) => {
     return response
   })
 });
+
+Cypress.Commands.add('postTask', (task, token) => {
+  cy.api({
+    url: '/tasks',
+    method: 'POST',
+    body: task,
+    headers: {
+      Authorization: token
+    },
+    failOnStatusCode: false
+  }).then(response => {
+    return response
+  })
+});
