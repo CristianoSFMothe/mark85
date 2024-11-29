@@ -71,4 +71,4 @@ Cypress.Commands.add('getTasks', (token) => {
   }).then(response => {
     return response
   })
-} );
+});
