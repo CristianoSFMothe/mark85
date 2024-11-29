@@ -44,9 +44,9 @@ describe('GET /tasks/:id', () => {
     cy.postUser(user)
     cy.postSession(user).then(respUser => {
 
-      cy.postTask(task, respUser.body.token).then(taskResp => {
+      cy.postTask(task, respUser.body.token).then(respTask => {
 
-        cy.getUniqueTask(taskResp.body._id, respUser.body.token).then(response => {
+        cy.getUniqueTask(respTask.body._id, respUser.body.token).then(response => {
           expect(response.status).to.equal(200)
         })
       })
@@ -62,13 +62,13 @@ describe('GET /tasks/:id', () => {
     cy.postUser(user)
     cy.postSession(user).then(respUser => {
 
-      cy.postTask(task, respUser.body.token).then(taskResp => {
+      cy.postTask(task, respUser.body.token).then(respTask => {
 
-        cy.deleteTask(taskResp.body._id, respUser.body.token).then(response => {
+        cy.deleteTask(respTask.body._id, respUser.body.token).then(response => {
           expect(response.status).to.eq(204)
         })
 
-        cy.getUniqueTask(taskResp.body._id, respUser.body.token).then(response => {
+        cy.getUniqueTask(respTask.body._id, respUser.body.token).then(response => {
           expect(response.status).to.eq(404)
         })
       })

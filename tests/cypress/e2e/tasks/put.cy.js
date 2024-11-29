@@ -1,14 +1,14 @@
-describe('DELETE /tasks/:id', () => {
+describe('PUT /tasks/:id/done', () => {
 
   beforeEach(function () {
-    cy.fixture('tasks/delete').then(function (tasks) {
+    cy.fixture('tasks/put').then(function (tasks) {
       this.tasks = tasks;
     })
   });
 
-  it('remove a task', function () {
+  it('update task to done', function () {
 
-    const { user, task } = this.tasks.remove
+    const { user, task } = this.tasks.update
 
     cy.task('removeUser', user.email)
     cy.task('removeTask', task.name, user.email)
@@ -17,8 +17,12 @@ describe('DELETE /tasks/:id', () => {
 
       cy.postTask(task, respUser.body.token).then(respTask => {
 
-        cy.deleteTask(respTask.body._id, respUser.body.token).then(response => {
+        cy.putTaskDone(respTask.body._id, respUser.body.token).then(response => {
           expect(response.status).to.equal(204)
+        })
+
+        cy.getUniqueTask(respTask.body._id, respUser.body.token).then(response => {
+          expect(response.body.is_done).to.be.true
         })
       })
     })
@@ -39,8 +43,8 @@ describe('DELETE /tasks/:id', () => {
           expect(response.status).to.eq(204)
         })
 
-        cy.deleteTask(respTask.body._id, respUser.body.token).then(response => {
-          expect(response.status).to.eq(404)
+        cy.putTaskDone(respTask.body._id, respUser.body.token).then(response => {
+          expect(response.status).to.equal(404)
         })
       })
     })
