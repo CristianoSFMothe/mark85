@@ -1,5 +1,7 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 const { connect } = require('./cypress/support/mongo')
+
+require('dotenv').config()
 
 module.exports = defineConfig({
   e2e: {
@@ -28,7 +30,13 @@ module.exports = defineConfig({
         }
       })
     },
-    baseUrl: "http://localhost:3333",
-    video: false
+    baseUrl: process.env.BASE_URL,
+    video: false,
+    screenshotOnRunFailure: false,
+    env: {
+      amqpHost: process.env.AMQP_HOST,
+      amqpQueue: process.env.AMQP_QUEUE,
+      amqpToken: process.env.AMQP_TOKEN
+    }
   },
 });
